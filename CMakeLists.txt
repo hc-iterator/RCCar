@@ -59,6 +59,7 @@ target_link_libraries(Project
     hardware_gpio
     hardware_i2c
     hardware_dma
+    pico_multicore
     hardware_adc
     hardware_pwm
     hardware_pio
