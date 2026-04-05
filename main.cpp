@@ -11,12 +11,7 @@
 #define PIN_S3 18   // 灯总开关 高低电平输入
 #define PIN_S4 19   // 喇叭开关 高低电平输入
 
-// 输出：LED 灯和蜂鸣器（与电机引脚无冲突）
-#define PIN_LED_LF 9
-#define PIN_LED_LB 10
-#define PIN_LED_RF 11
-#define PIN_LED_RB 12
-#define PIN_BUZZER 13
+
 
 // ==================== 共享数据结构体（双核通信） ====================
 struct SharedData {
@@ -41,12 +36,12 @@ void init_gpio() {
     gpio_init(PIN_S4); gpio_set_dir(PIN_S4, GPIO_IN);
 
     // LED 输出
-    gpio_init(PIN_LED_LF); gpio_set_dir(PIN_LED_LF, GPIO_OUT);
-    gpio_init(PIN_LED_LB); gpio_set_dir(PIN_LED_LB, GPIO_OUT);
-    gpio_init(PIN_LED_RF); gpio_set_dir(PIN_LED_RF, GPIO_OUT);
-    gpio_init(PIN_LED_RB); gpio_set_dir(PIN_LED_RB, GPIO_OUT);
-    gpio_init(PIN_BUZZER); gpio_set_dir(PIN_BUZZER, GPIO_OUT);
-    gpio_put(PIN_BUZZER, 1);   // 蜂鸣器默认关闭
+    gpio_init(led_lf); gpio_set_dir(led_lf, GPIO_OUT);
+    gpio_init(led_rf); gpio_set_dir(led_rf, GPIO_OUT);
+    gpio_init(led_lb); gpio_set_dir(led_lb, GPIO_OUT);
+    gpio_init(led_rb); gpio_set_dir(led_rb, GPIO_OUT);
+    gpio_init(Buzzer); gpio_set_dir(Buzzer, GPIO_OUT);
+    gpio_put(Buzzer, 1);   // 蜂鸣器默认关闭
 
     // 电机驱动 PWM 初始化（来自 RCCar 模块）
     initMotorDriver();
@@ -114,14 +109,14 @@ void control_lights(bool light_switch, int8_t steering) {
     lb_on = left_turn;
     rb_on = right_turn;
 
-    gpio_put(PIN_LED_LF, lf_on);
-    gpio_put(PIN_LED_LB, lb_on);
-    gpio_put(PIN_LED_RF, rf_on);
-    gpio_put(PIN_LED_RB, rb_on);
+    gpio_put(led_lf, lf_on);
+    gpio_put(led_lb, lb_on);
+    gpio_put(led_rf, rf_on);
+    gpio_put(led_rb, rb_on);
 }
 
 void control_horn(bool horn) {
-    gpio_put(PIN_BUZZER, horn ? 0 : 1);
+    gpio_put(Buzzer, horn ? 0 : 1);
 }
 
 // ==================== main ====================

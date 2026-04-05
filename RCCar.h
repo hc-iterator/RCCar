@@ -16,6 +16,12 @@ extern const uint8_t PowerMotor_2; // 连接DRV8833 AIN2
 extern const uint8_t SteeringMotor_1; // 连接DRV8833 BIN1
 extern const uint8_t SteeringMotor_2; // 连接DRV8833 BIN2
 
+// 输出：LED 灯和蜂鸣器
+constexpr const uint8_t led_lf = 9;
+constexpr const uint8_t led_rf = 10;
+constexpr const uint8_t led_lb = 11;
+constexpr const uint8_t led_rb = 12;
+
 // PWM参数声明
 extern const uint32_t PWM_FREQ;
 extern const uint16_t PWM_WRAP;
