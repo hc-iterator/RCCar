@@ -2,6 +2,7 @@
 
 #include "pico/stdlib.h"
 #include "vector"
+#include "blink.pio.h"
 #include "cstdio"
 #include "string"
 #include "hardware/adc.h"

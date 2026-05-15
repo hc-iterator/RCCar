@@ -43,6 +43,8 @@ add_executable(Project main.cpp
         RCCar.h
         MotorControl.cpp )
 
+pico_generate_pio_header(Project ${CMAKE_CURRENT_LIST_DIR}/blink.pio)
+
 pico_set_program_name(Project "Project")
 pico_set_program_version(Project "0.1")
 
