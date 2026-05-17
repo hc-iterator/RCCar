@@ -1,2 +1,1 @@
-# RCCar
-A repository for gruop project which some students in ShiGuang Middle School making a car(class 2 grade 8).
+# This Project is moved to https://github.com/hc-iterator/Swimming-Pool-For-Your-Fish
